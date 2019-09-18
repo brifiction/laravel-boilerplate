@@ -11,6 +11,26 @@ class User extends Authenticatable implements MustVerifyEmail
     use Notifiable;
 
     /**
+     * The database connection used
+     *
+     */
+    protected $connection = 'mysql';
+
+    /**
+     * The table properties
+     *
+     */
+    protected $table = 'users';
+    protected $primaryKey = 'user_id';
+    public $incrementing = true;
+
+    /**
+     * Toggle timestamps
+     *
+     */
+    public $timestamps = true;
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -36,4 +56,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function account() {
+        return $this->hasOne('App\Account', 'user_id','account_id');
+    }
 }
