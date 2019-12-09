@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Rules\PhoneValidation;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -48,11 +49,19 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $rules = [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'string', new PhoneValidation(), 'max:100'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        ];
+
+        $messages = [
+            'name'    => 'The :attribute must contain alphabets only.',
+            'phone' => 'The :attribute must be be a valid Australian phone number.',
+        ];
+
+        return Validator::make($data, $rules, $messages);
     }
 
     /**
@@ -63,10 +72,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $user->account()->create([
+            'user_id' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'phone' => $data['phone'],
+        ]);
+
+        return $user;
     }
 }
