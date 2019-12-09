@@ -20,6 +20,10 @@ class CreateAccountsTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->timestamps();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 

@@ -21,7 +21,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      */
     protected $table = 'users';
-    protected $primaryKey = 'user_id';
+    protected $primaryKey = 'id';
     public $incrementing = true;
 
     /**
@@ -36,7 +36,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'user_id'
     ];
 
     /**
@@ -58,6 +58,6 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     public function account() {
-        return $this->hasOne('App\Account', 'user_id','account_id');
+        return $this->hasOne('App\Account', 'user_id','id');
     }
 }
