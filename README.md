@@ -1,10 +1,11 @@
 # laravel-boilerplate
 
 ## Specifications
+Application Architecture
 ```
 PHP: ^7.2 
+MySQL: 8.0
 Laravel: ^6.0
-
 ```
 
 ## Introduction / Summary
