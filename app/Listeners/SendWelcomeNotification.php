@@ -28,9 +28,12 @@ class SendWelcomeNotification
      */
     public function handle(Verified $event)
     {
-        if ($event->user->hasVerifiedEmail()) {
+        // declare & assign user data
+        $user = $event->user;
+
+        if ($user->hasVerifiedEmail()) {
             // send a welcome email, after user email is verified
-            Mail::to($event->user->email)->send(new Welcome($event->user));
+            Mail::to($user->email)->send(new Welcome($user));
         }
     }
 }
