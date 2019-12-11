@@ -2,9 +2,11 @@
 
 namespace App\Listeners;
 
+use App\Mail\Welcome;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Mail;
 
 class SendWelcomeNotification
 {
@@ -27,7 +29,8 @@ class SendWelcomeNotification
     public function handle(Verified $event)
     {
         if ($event->user->hasVerifiedEmail()) {
-            // send email
+            // send a welcome email, after user email is verified
+            Mail::to($event->user->email)->send(new Welcome($event->user));
         }
     }
 }
