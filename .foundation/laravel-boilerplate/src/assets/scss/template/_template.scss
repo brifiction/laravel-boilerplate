@@ -1,15 +1,15 @@
 // These are the styles to make some of the templates look extra nice.
 // Feel free to remove these styles for production!
 
-// Body Styles 
+// Body Styles
 body,
-html, 
+html,
 .body {
-  background: #f3f3f3 !important;
+  background: $light-gray !important;
 }
 
 .container.header {
-  background: #f3f3f3;
+  background: $light-gray;
 }
 
 .body-drip {
@@ -18,7 +18,7 @@ html,
 
 // Full Width Headers
 .header {
-  background: #8a8a8a;
+  background: $black;
 }
 
 .header .columns {
@@ -55,5 +55,5 @@ table.button.google table td {
 }
 
 .wrapper.secondary {
-  background: #f3f3f3;
+  background: $light-gray;
 }
