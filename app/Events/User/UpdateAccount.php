@@ -18,8 +18,9 @@ class UpdateAccount implements ShouldBroadcast
 
     /**
      * Create a new event instance.
+     * For example: event(new UpdateAccount('your account has been successfully updated.'));
      *
-     * @return void
+     * @param $message
      */
     public function __construct($message)
     {
@@ -29,7 +30,7 @@ class UpdateAccount implements ShouldBroadcast
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return \Illuminate\Broadcasting\Channel|array
+     * @return Channel|array
      */
     public function broadcastOn()
     {
