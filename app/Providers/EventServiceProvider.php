@@ -20,7 +20,10 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         Verified::class => [
-            'App\Listeners\SendWelcomeNotification',
+            'App\Listeners\User\SendWelcomeNotification',
+        ],
+        'App\Events\User\UpdateAccount' => [
+            'App\Listeners\User\UpdateAccountNotification',
         ],
     ];
 
