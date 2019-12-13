@@ -6,7 +6,7 @@
                class="form-control @error($field) is-invalid @enderror" name="{{ $field }}"
                value="{{ old($field) }}" required autocomplete="name" autofocus>
 
-        @error('{{ $field }}')
+        @error($field)
         <span class="invalid-feedback" role="alert">
             <strong>{{ $message }}</strong>
         </span>
