@@ -3,14 +3,9 @@
         "config:base",
         ":preserveSemverRanges"
     ],
-    "ignorePaths": {
-        "description": "Skip any package file whose path matches one of these. Can be string or glob pattern",
-        "type": "array",
-        "items": {
-            "type": "string"
-        },
-        "default": ["**/.foundation/**"]
-    },
+    "ignorePaths": [
+        "**/.foundation/**"
+    ],
     "dockerfile": {
         "enabled": false
     }
