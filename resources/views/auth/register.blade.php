@@ -17,8 +17,6 @@
 
                             @include('components.form.input', ['field' => 'phone', 'label' => 'Phone'])
 
-                            @include('components.form.address')
-
                             @include('components.form.password')
 
                             @include('components.form.password-confirm')
