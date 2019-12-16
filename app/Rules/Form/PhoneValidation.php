@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Rules;
+namespace App\Rules\Form;
 
 use Illuminate\Contracts\Validation\Rule;
 
@@ -19,9 +19,10 @@ class PhoneValidation implements Rule
         // $this->validate($request, ['phone' => new PhoneValidation]);
         // --OR--
         // $rules = [
-        //    'phone' => ['required', new PhoneValidation],
+        //    'phone' => ['required', new PhoneValidation(), ...],
         // ];
-        return preg_match('/^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$/', $value);
+        $pattern = '/^(?:\+?(61))? ?(?:\((?=.*\)))?(0?[2-57-8])\)? ?(\d\d(?:[- ](?=\d{3})|(?!\d\d[- ]?\d[- ]))\d\d[- ]?\d[- ]?\d{3})$/';
+        return preg_match($pattern, $value);
     }
 
     /**
