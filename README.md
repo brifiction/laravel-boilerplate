@@ -27,9 +27,7 @@ laravel/ui: ^1.0
 ## Summary
 This is a Laravel boilerplate project. It will be updated to latest version of Laravel, when ready.
 
-The project will constantly evolve and adapt, the architecture itself will be subjected to change in years to come. Ideally, this boilerplate is best hosted / developed in a Linux environment.
-
-
+This dev project will constantly evolve and adapt, the architecture itself will be subjected to change in years to come. Ideally, this boilerplate is best hosted / developed in a Linux environment.
 
 In summary, there are a couple of composer packages / services used for the baseline of this boilerplate.
 1. Pusher
@@ -39,9 +37,17 @@ In summary, there are a couple of composer packages / services used for the base
     1. Laravel Activity Log
 
 ### Docker
-Including Docker and Docker Compose files are entirely optional. However, containerisation support will maximize development and mundane CI/CD workflows.
+Including Docker and Docker Compose files are entirely optional. 
 
-Be warned that using Docker for deployment to production environment is strongly advised, and please ensure that your ``Dockerfile(s)`` and ``docker-compose`` files are in order. Such as, if you're handling database 
+However, containerisation support will maximize development and mundane CI/CD workflows.
+
+> Be warned that using Docker for deployment to production environment is highly not recommended.
+> DO NOT USE Docker for production databases. NEVER!
+
+Instead, spin up a dedicated database cluster / droplet / etc for production use. This type of service would usually bundle with backup and additional security features, beneficial for your organization. 
+
+Such as, for Azure there are geo-redundant backups, firewall, etc - for example, the [SQL Database Business Continuity](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-business-continuity) docs. 
+And for Digital Ocean, there are more documentation on [Managed Databases](https://www.digitalocean.com/docs/databases/).
 
 ### Redis
 For this boilerplate, the main Redis client used is [predis](https://github.com/nrk/predis). It is installed via composer:
