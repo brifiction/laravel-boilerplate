@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Rules\FullNameValidation;
-use App\Rules\PhoneValidation;
+use App\Rules\Form\FullNameValidation;
+use App\Rules\Form\PhoneValidation;
 use App\Rules\SentenceCaseValidation;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
