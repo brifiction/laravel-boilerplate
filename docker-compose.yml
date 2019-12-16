@@ -72,24 +72,6 @@ services:
     networks:
       - app-network
 
-  #MS SQl Server Service
-  mssql:
-    image: mcr.microsoft.com/mssql/server:2017-latest
-    container_name: mssql
-    build:
-      context: .docker/mssql
-      dockerfile: Dockerfile
-    environment:
-      SERVICE_NAME: mssql
-      SERVICE_TAGS: dev
-      SA_PASSWORD: "48wB&&TRpCHu!XiiteK*Ar78e1"
-      ACCEPT_EULA: "Y"
-      MSSQL_AGENT_ENABLED: "true"
-    ports:
-      - "1433:1433"
-    networks:
-      - app-network
-
 #Docker Networks
 networks:
   app-network:
