@@ -29,6 +29,6 @@ class SentenceCaseValidation implements Rule
      */
     public function message()
     {
-        return ':attribute should be in sentence case, such as \'John Doe\'.';
+        return ':attribute should be in sentence case, such as Conan O\'Brien.';
     }
 }
