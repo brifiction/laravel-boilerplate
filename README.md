@@ -1,4 +1,7 @@
 # laravel-boilerplate
+Important: The README will be constantly updated, due how a boilerplate project is defined / built with its core composer packages used. 
+There are tons of optional choices to start your Laravel project, however there are some baseline composer packages that are defined as core packages for the boilerplate. 
+In addition, these composer packages are entirely optional to install / use, remove them if they are not required.
 
 ## Specifications
 Application Architecture
