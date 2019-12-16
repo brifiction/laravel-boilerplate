@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Rules\FullNameValidation;
 use App\Rules\PhoneValidation;
+use App\Rules\SentenceCaseValidation;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -50,7 +52,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         $rules = [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', new FullNameValidation(), new SentenceCaseValidation(), 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'phone' => ['required', 'string', new PhoneValidation(), 'max:100'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
