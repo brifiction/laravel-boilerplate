@@ -1,0 +1,9 @@
+# Ignore .docker folder
+.docker
+
+# Ignore docker-compose environment files
+docker-compose.development.yml
+docker-compose.production.yml
+
+# Ignore dockerfile environment files
+Dockerfile.production
