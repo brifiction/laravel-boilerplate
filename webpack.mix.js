@@ -11,7 +11,16 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js').sourceMaps();
+mix.js('resources/js/app.js', 'public/js')
+    .version()
+    .sourceMaps();
 
-mix.sass('resources/sass/app.scss', 'public/css');
-mix.sass('resources/sass/main.scss', 'public/css');
+mix.copy('resources/img','public/img');
+
+mix.sass('resources/sass/app.scss', 'public/css').options({
+    processCssUrls: false
+});
+
+mix.sass('resources/sass/main.scss', 'public/css').options({
+    processCssUrls: false
+});
