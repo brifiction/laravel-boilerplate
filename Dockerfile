@@ -1,3 +1,23 @@
+#
+# PHP Dependencies
+#
+#FROM composer:1.7.2 as vendor
+#
+#COPY database/ database/
+#COPY tests/ tests/
+#COPY composer.json composer.json
+#COPY composer.lock composer.lock
+#
+#RUN composer install \
+#    --ignore-platform-reqs \
+#    --no-interaction \
+#    --no-plugins \
+#    --no-scripts \
+#    --prefer-dist
+
+#
+# Laravel App
+#
 FROM php:7.2-fpm
 
 # Copy composer.lock and composer.json
@@ -45,6 +65,8 @@ RUN useradd -u 1000 -ms /bin/bash -g www www
 
 # Copy existing application directory contents
 COPY . /var/www
+
+# COPY --from=vendor /app/vendor/ /var/www/vendor/
 
 # Copy existing application directory permissions
 COPY --chown=www:www . /var/www
