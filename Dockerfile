@@ -7,14 +7,9 @@ COPY composer.lock composer.json /var/www/
 WORKDIR /var/www
 
 # Install dependencies (including MSSQL pre-requisites)
-# Part 1
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-    gnupg2
-
-# Part 2
-RUN apt-get update \
-    && apt-get install -y \
+    gnupg2 \
     build-essential \
     mariadb-client \
     libpng-dev \
