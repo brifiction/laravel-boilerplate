@@ -48,12 +48,27 @@ services:
       - "3306:3306"
     environment:
       MYSQL_DATABASE: laravel
-      MYSQL_ROOT_PASSWORD: 48wB&&TRpCHu!XiiteK*Ar78e1
+      MYSQL_ROOT_PASSWORD: root
       SERVICE_NAME: mysql
       SERVICE_TAGS: dev
     volumes:
       - dbdata:/var/lib/mysql/
       - .docker/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - app-network
+
+  # PhpMyAdmin
+  phpmyadmin:
+    depends_on:
+      - mysql
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: unless-stopped
+    ports:
+      - 8082:80
+    environment:
+      PMA_HOST: mysql
+      MYSQL_ROOT_PASSWORD: root
     networks:
       - app-network
 
