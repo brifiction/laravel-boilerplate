@@ -27,9 +27,18 @@ COPY composer.lock composer.json /var/www/
 WORKDIR /var/www
 
 # Install dependencies (including MSSQL pre-requisites)
+
+# Part 1
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     gnupg2 \
+    && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+    && curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list \
+       > /etc/apt/sources.list.d/mssql-release.list
+
+# Part 2
+RUN apt-get update \
+    && apt-get install -y \
     build-essential \
     mariadb-client \
     libpng-dev \
@@ -46,7 +55,10 @@ RUN apt-get update \
     git \
     curl \
     nano \
-    unixodbc-dev
+    && apt-get update \
+    && ACCEPT_EULA=Y apt-get install -y --no-install-recommends \
+    unixodbc-dev \
+    msodbcsql17
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
