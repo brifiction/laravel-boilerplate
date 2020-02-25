@@ -1,0 +1,5 @@
+CREATE DATABASE Laravel;
+GO
+
+USE Laravel;
+GO
