@@ -57,23 +57,26 @@ services:
     networks:
       - app-network
 
-    #MSSQl Service
+  #MSSQl Service
   mssql:
-    image: mcr.microsoft.com/mssql/server:2017-latest
+    image: mcr.microsoft.com/mssql/server:2019-latest
     container_name: mssql
     build:
       context: .docker/mssql
       dockerfile: Dockerfile
     environment:
-      SA_PASSWORD: "1Secure*Password1"
+      SA_PASSWORD: "7qxNTJze#l1PWw0^G3GjsEu13oGpNSvl"
       ACCEPT_EULA: "Y"
+      MSSQL_PID: "Developer"
       MSSQL_AGENT_ENABLED: "true"
     ports:
       - "1433:1433"
+    volumes:
+      - ./.db/mssql:/var/opt/mssql
     networks:
       - app-network
 
-  # PhpMyAdmin
+  #PhpMyAdmin
   phpmyadmin:
     depends_on:
       - mysql
