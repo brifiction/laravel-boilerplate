@@ -55,11 +55,15 @@ RUN apt-get update \
     unzip \
     git \
     curl \
-    nano \
-    && apt-get update \
+    nano
+
+# Part 3
+RUN apt-get update \
     && ACCEPT_EULA=Y apt-get install -y --no-install-recommends \
     unixodbc-dev \
-    msodbcsql17
+    msodbcsql17 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
