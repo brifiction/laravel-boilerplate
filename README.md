@@ -1,5 +1,5 @@
 # laravel-boilerplate
-![GitHub All Releases](https://img.shields.io/github/downloads/brifiction/laravel-boilerplate/total?style=flat-square)
+![GitHub All Releases](https://img.shields.io/github/downloads/brifiction/laravel-boilerplate/total?style=for-the-badge) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/brifiction/laravel-boilerplate?style=for-the-badge)
 
 Important: The README will be constantly updated, due how a boilerplate project is defined / built with its core composer packages used. 
 There are tons of optional choices to start your Laravel project, however there are some baseline composer packages that are defined as core packages for the boilerplate. 
