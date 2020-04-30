@@ -1,49 +1,68 @@
 # laravel-boilerplate
 ![GitHub All Releases](https://img.shields.io/github/downloads/brifiction/laravel-boilerplate/total?style=for-the-badge) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/brifiction/laravel-boilerplate?style=for-the-badge)
 
-Important: The README will be constantly updated, due how a boilerplate project is defined / built with its core composer packages used. 
-There are tons of optional choices to start your Laravel project, however there are some baseline composer packages that are defined as core packages for the boilerplate. 
-In addition, these composer packages are entirely optional to install / use, remove them if they are not required.
-
 ## Summary
-This is a Laravel boilerplate project. It will be updated to latest version of Laravel, when ready.
-
-This dev project will constantly evolve and adapt, the architecture itself will be subjected to change in years to come. Ideally, this boilerplate is best hosted / developed in a Linux environment.
-
-In summary, there are a couple of composer packages / services used for the baseline of this boilerplate.
-1. Pusher
-2. Sentry
-3. Spatie
-    1. Laravel Analytics
-    1. Laravel Activity Log
+This is a Laravel boilerplate project. It will be updated to latest Laravel version, when available.
 
 ### Docker
-Including Docker and Docker Compose files are entirely optional. 
+1. Microsoft SQL Server
+1. MYSQL
+1. NGINX
+1. PHP-FPM
+1. REDIS (optional)
 
-However, containerisation support will maximize development and mundane CI/CD workflows.
+## How to use
 
-> Be warned that using Docker for deployment to production environment is highly not recommended.
-> DO NOT USE Docker for production databases. NEVER!
+1. Modify your configurations for each service, that suits your needs. They are each located in the ``.docker`` folder.
+1. Modify your ``Dockerfile`` and ``docker-compose.yml`` files, to suit your containerization needs.
+1. Run ``composer install``.
+1. Define your environment variables in the ``.env`` file, including your database connection driver.
+1. Run the ``docker-compose`` commands below in order.
+   ```bash
+   # Pulls an image associated with a service defined in a docker-compose.yml or docker-stack.yml file, but does not start containers based on those images.
+   docker-compose pull
+   # Services are built once and then tagged, by default as 'project_service'.
+   docker-compose build
+   # Builds, (re)creates, starts, and attaches to containers for a service, also as 'Detached mode'.
+   docker-compose up -d
+   ```
+1. That's it! Enjoy coding with Laravel!
 
-Instead, spin up a dedicated database cluster / droplet / etc for production use. This type of service would usually bundle with backup and additional security features, beneficial for your organization. 
-Such as, for Azure there are geo-redundant backups, firewall, etc - for example, the [SQL Database Business Continuity](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-business-continuity) docs. 
-As for Digital Ocean, there are more documentation on [Managed Databases](https://www.digitalocean.com/docs/databases/).
+## Troubleshooting
+1. There were some changes made with the Docker containers, why aren't they showing changes made?
+   
+   Try below in order, following commands should help make each build helpful for development workflow.
+   ```bash
+   # Stops containers and removes containers, networks, volumes, and images created by up.
+   docker-compose down
+   # Services are built once and then tagged, by default as 'project_service'.
+   docker-compose build
+   # If no changes to Dockerfiles.
+   docker-compose build --no-cache
+   # Builds, (re)creates, starts, and attaches to containers for a service, also as 'Detached mode'.
+   docker-compose up -d
+   ```
+   
+1. Some of the Linux packages are not installing, or have an error returned for some of them. How do we fix them?
 
-### Redis
-For this boilerplate, the main Redis client used is [predis](https://github.com/nrk/predis). It is installed via composer:
+   Based on the error(s) received, it varies from incorrect packages installed with mismatched OS type, to deprecated 
+   package names used. However, it is still all about modifying the `apt-get` commands in the `Dockerfile` at project root.
 
-```bash
-composer require predis/predis
-```
+## References
+1. Laravel (https://laravel.com/)
+1. PHP (https://www.php.net/downloads)
+1. Composer (https://getcomposer.org/)
 
-If you'd like to change to another client, please edit the config / env file, and remove ``predis/predis`` from composer.json file.
+### Microsoft SQL Server PDO Drivers
+The online resources for the ``sqlsrv pdo drivers`` constantly changes, however would like to leave a note here that 
+you'll need them to be added as a ``php extension``, in order to make a successful mssql database connection.
 
-For more information, go to [Laravel Docs](https://laravel.com/docs) > Database > Redis. Please bear in mind, links might be subjected to change.
+It is like any other database driver, just that these are obtained and configured differently, as opposed to `postgres`,
+`sqlite` and others.
 
-## Resources (Optional - Uninstall if unnecessary)
-[Spatie, Web design agency based in Antwerp, Belgium](https://github.com/spatie)
-1. [Laravel Analytics](https://github.com/spatie/laravel-analytics)
-1. [Laravel Activity Log](https://github.com/spatie/laravel-activitylog)
-
+### Docker Compose commands
+1. ```docker-compose down``` (https://docs.docker.com/compose/reference/down/)
+1. ```docker-compose build``` (https://docs.docker.com/compose/reference/build/)
+1. ```docker-compose up``` (https://docs.docker.com/compose/reference/up/)
 
 
