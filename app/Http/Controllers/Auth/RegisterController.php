@@ -8,13 +8,13 @@ use App\Rules\Form\FullNameValidation;
 use App\Rules\Form\PhoneValidation;
 use App\Rules\SentenceCaseValidation;
 use App\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class RegisterController extends Controller
-{
+class RegisterController extends Controller {
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -33,15 +33,14 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/account';
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct() {
         $this->middleware('guest');
         $this->middleware('guest:administrator');
     }
@@ -49,11 +48,10 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
+    protected function validator(array $data) {
         $rules = [
             'name' => ['required', 'string', new FullNameValidation(), new SentenceCaseValidation(), 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -62,7 +60,7 @@ class RegisterController extends Controller
         ];
 
         $messages = [
-            'name'    => 'The :attribute must contain alphabets only.',
+            'name' => 'The :attribute must contain alphabets only.',
             'phone' => 'The :attribute must be be a valid Australian phone number.',
         ];
 
@@ -72,11 +70,10 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \App\User
      */
-    protected function create(array $data)
-    {
+    protected function create(array $data) {
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -98,8 +95,7 @@ class RegisterController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showAdminRegisterForm()
-    {
+    public function showAdminRegisterForm() {
         return view('auth.register', ['url' => 'admin']);
     }
 
@@ -109,8 +105,7 @@ class RegisterController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function createAdmin(Request $request)
-    {
+    protected function createAdmin(Request $request) {
         $this->validator($request->all())->validate();
         $admin = Administrator::create([
             'name' => $request['name'],
