@@ -68,10 +68,23 @@ RUN apt-get update \
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Install extensions
-RUN docker-php-ext-install pdo_mysql zip exif pcntl soap
+# Install and configure extensions, for more information https://hub.docker.com/_/php/
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg
-RUN docker-php-ext-install gd
+RUN docker-php-ext-install gd \
+    pdo_mysql \
+    zip \
+    exif \
+    pcntl \
+    soap \
+    intl \
+    pdo_mysql \
+    zip \
+    bcmath \
+    opcache
+
+# Install extensions - MSSQL drivers
+RUN pecl install sqlsrv pdo_sqlsrv xdebug
+RUN docker-php-ext-enable sqlsrv pdo_sqlsrv xdebug
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
