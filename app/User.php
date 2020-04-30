@@ -6,29 +6,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     use Notifiable;
-
-    /**
-     * The database connection used
-     *
-     */
-    protected $connection = 'mysql';
-
-    /**
-     * The table properties
-     *
-     */
-    protected $table = 'users';
-    protected $primaryKey = 'id';
-    public $incrementing = true;
-
-    /**
-     * Toggle timestamps
-     *
-     */
-    public $timestamps = true;
 
     /**
      * The attributes that are mass assignable.
@@ -36,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'user_id'
+        'name', 'email', 'password',
     ];
 
     /**
@@ -56,8 +36,4 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function account() {
-        return $this->hasOne('App\Account', 'user_id','id');
-    }
 }
