@@ -1,5 +1,5 @@
 # laravel-boilerplate
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/brifiction/laravel-boilerplate?style=for-the-badge) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/brifiction/laravel-boilerplate?style=for-the-badge) ![Docker Pulls](https://img.shields.io/docker/pulls/brifiction/laravel-boilerplate?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/brifiction/laravel-boilerplate?style=for-the-badge) ![GitHub release (latest by date)](https://img.shields.io/github/v/release/brifiction/laravel-boilerplate?style=for-the-badge) ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/brifiction/laravel-boilerplate?style=for-the-badge) ![Docker Pulls](https://img.shields.io/docker/pulls/brifiction/laravel-boilerplate?style=for-the-badge)
 
 ## Summary
 This is a Laravel boilerplate project. It will be updated to latest Laravel version, when available.
