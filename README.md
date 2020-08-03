@@ -1,7 +1,7 @@
 # laravel-boilerplate
 ![GitHub](https://img.shields.io/github/license/brifiction/laravel-boilerplate?style=for-the-badge) 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/brifiction/laravel-boilerplate?style=for-the-badge) 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/brifiction/laravel-boilerplate/PHP%20Tests%20for%20Laravel%20Boilerplate?label=GitHub%20Actions&style=for-the-badge)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/brifiction/laravel-boilerplate/PHPUnit%20Tests%20for%20Laravel%20Boilerplate?label=GitHub%20Actions&style=for-the-badge)
 ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/brifiction/laravel-boilerplate?style=for-the-badge) 
 ![Docker Pulls](https://img.shields.io/docker/pulls/brifiction/laravel-boilerplate?style=for-the-badge)
 
