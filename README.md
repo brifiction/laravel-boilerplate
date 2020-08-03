@@ -6,7 +6,36 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/brifiction/laravel-boilerplate?style=for-the-badge)
 
 ## Summary
-This is a Laravel boilerplate project. It will be updated to latest Laravel version, when available.
+This is a Laravel boilerplate project. It will be updated to the latest Laravel version (upon official release, after 
+reviewing the upgrade notes and change logs).
+
+Usage of the provided CI/CD products / services, are purely optional. However, the current focus of this boilerplate project 
+is to develop your Laravel application with Docker in a local environment.
+
+> Please review the files mentioned below, as you'll find most of my boilerplate customizations at these locations:
+> 1. The `composer.json` file, please review sections such as `require` and `require-dev`.
+> 1. Example helper functions, under `app/Helpers`.
+> 1. The `tests/*` files (more will be defined for CI/CD purposes).
+
+### Node / Yarn
+Please review the `package.json` file.
+> Delete this file `package-lock.json`, if you're using `yarn`.
+
+## Continuous Integration and Continuous Development (CI/CD)
+
+### GitHub
+
+#### GitHub Actions
+There are pre-defined example `workflows`. They are meant to be later customized, or define new workflows to tailor 
+your development workflow needs:
+
+##### Example workflows
+1. Testing each Laravel deployment on each supported OS.
+1. Running your Laravel PHPUnit tests.
+1. Install and test your PHP modules beforehand. 
+1. [Create your own Docker container action](https://docs.github.com/en/actions/creating-actions/creating-a-docker-container-action).
+
+And so much more.
 
 ### Docker
 Below are the services defined in the `docker-compose.yml` file:
@@ -21,13 +50,15 @@ Below are the services defined in the `docker-compose.yml` file:
 The services mentioned above are mostly optional, as you are welcome to make any changes to the `Dockerfile` and
 `docker-compose.yml` files to suit your local development needs.
 
+All Docker configurations for each service, are defined in the `.docker` folder structure.
+
 ## How to use
 
-1. Modify your configurations for each service, that suits your needs. They are each located in the ``.docker`` folder.
-1. Modify your ``Dockerfile`` and ``docker-compose.yml`` files, to suit your containerization needs.
-1. Run ``composer install``.
-1. Define your environment variables in the ``.env`` file, including your database connection driver.
-1. Run the ``docker-compose`` commands below in order.
+1. Modify your configurations for each service, that suits your needs. They are each located in the `.docker` folder.
+1. Modify your `Dockerfile` and `docker-compose.yml` files, to suit your containerization needs.
+1. Run `composer install`.
+1. Define your environment variables in the `.env` file, including your database connection driver.
+1. Run the `docker-compose` commands below in order.
    ```bash
    # Pulls an image associated with a service defined in a docker-compose.yml or docker-stack.yml file, but does not start containers based on those images.
    docker-compose pull
@@ -74,6 +105,7 @@ It is like any other database driver, just that these are obtained and configure
 1. Laravel (https://laravel.com/)
 1. PHP (https://www.php.net/downloads)
 1. Composer (https://getcomposer.org/)
+1. Docker Compose (https://docs.docker.com/compose/)
 1. GitHub Actions (https://docs.github.com/en/actions)
 
 
