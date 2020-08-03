@@ -1,11 +1,14 @@
 {
     "extends": [
         "config:base",
-        ":preserveSemverRanges"
+        ":preserveSemverRanges",
+        ":disableRenovate"
     ],
     "ignorePaths": [
         "**/.foundation/**",
-        "**/.docker/**"
+        "**/.docker/**",
+        "**/.github/**",
+        "**/.db/**"
     ],
     "dockerfile": {
         "enabled": false
