@@ -28,8 +28,8 @@ jobs:
           extensions: mbstring, dom, fileinfo, curl, xml, libxml, zip, pcntl, json, tokenizer, pdo, pgsql, sqlite, pdo_sqlite, pdo_sqlsrv, mysql
           ini-values: "post_max_size=256M" #optional
 
-      - name: Check PHP Version
+      - name: Check PHP version
         run: php -v
 
-      - name: Check PHP Modules (Extensions)
+      - name: Check PHP modules installed (Extensions)
         run: php -m
