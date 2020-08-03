@@ -1,4 +1,4 @@
-name: PHP Versions with Supported Operating Systems
+name: Example - PHP versions with selected modules / extensions, on supported operating systems
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
       - release/*
 
 jobs:
-  php-versions-with-supported-os:
-    name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
+  php-versions-with-selected-modules-on-supported-os:
+    name: PHP ${{ matrix.php-versions }} test on ${{ matrix.operating-system }}
     runs-on: ${{ matrix.operating-system }}
 
     strategy:
@@ -25,8 +25,8 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
-          extensions: mbstring, dom, fileinfo, curl, xml, libxml, zip, pcntl, json, tokenizer, pdo, pgsql, sqlite, pdo_sqlite, pdo_sqlsrv, mysql
-          ini-values: "post_max_size=256M" #optional
+          extensions: mbstring, dom, fileinfo # optional
+          ini-values: "post_max_size=256M" # optional
 
       - name: Check PHP version
         run: php -v

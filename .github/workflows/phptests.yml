@@ -1,4 +1,4 @@
-name: PHP Tests for Laravel Boilerplate
+name: PHPUnit Tests for Laravel Boilerplate
 
 on:
   push:
@@ -10,19 +10,27 @@ on:
       - master
 
 jobs:
-  php-tests-for-laravel-boilerplate:
-    name: PHP Build Tests with PHPUnit
+  phpunit-tests-for-laravel-boilerplate:
+    name: PHPUnit Tests for Laravel Boilerplate - PHP ${{ matrix.php-versions }} on ${{ matrix.operating-system }}
     runs-on: ${{ matrix.operating-system }}
 
     strategy:
       fail-fast: false
       matrix:
-        operating-system: [ubuntu-latest]
-        php-versions: ['7.2', '7.3', '7.4']
+        operating-system: [ubuntu-latest, windows-latest, macOS-latest]
+        php-versions: ['7.4'] # matching latest Laravel version
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      # optional step - watch this step for successful extensions installed, based on OS list defined.
+      - name: Install PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: mbstring, dom, fileinfo, curl, xml, libxml, zip, pcntl, json, tokenizer, pdo, pgsql, sqlite, pdo_sqlite, sqlsrv, pdo_sqlsrv, mysql # optional
+          ini-values: "post_max_size=256M" # optional
 
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
