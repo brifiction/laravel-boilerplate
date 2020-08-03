@@ -4,14 +4,15 @@ on:
   push:
     branches:
       - master
-      - releases/*
+      - release/*
 
 jobs:
-  php-test-on-os:
+  php-versions-with-supported-os:
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
     runs-on: ${{ matrix.operating-system }}
 
     strategy:
+      fail-fast: false
       matrix:
         operating-system: [ubuntu-latest, windows-latest, macOS-latest]
         php-versions: ['7.2', '7.3', '7.4']
@@ -24,8 +25,11 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
-          extensions: mbstring, dom, fileinfo, curl, libxml, zip, pcntl, pdo, sqlite, pdo_sqlite, pdo_sqlsrv, mysql
+          extensions: mbstring, dom, fileinfo, curl, xml, libxml, zip, pcntl, json, tokenizer, pdo, pgsql, sqlite, pdo_sqlite, pdo_sqlsrv, mysql
           ini-values: "post_max_size=256M" #optional
 
-      - name: Check PHP Version
+      - name: Check PHP version
         run: php -v
+
+      - name: Check PHP modules installed (Extensions)
+        run: php -m

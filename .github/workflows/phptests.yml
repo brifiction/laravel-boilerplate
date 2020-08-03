@@ -4,15 +4,21 @@ on:
   push:
     branches:
       - master
-      - features/*
+      - feature/*
   pull_request:
     branches:
       - master
 
 jobs:
-  laravel-boilerplate-tests:
+  php-tests-for-laravel-boilerplate:
     name: PHP Build Tests with PHPUnit
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.operating-system }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        operating-system: [ubuntu-latest]
+        php-versions: ['7.2', '7.3', '7.4']
 
     steps:
       - name: Checkout
