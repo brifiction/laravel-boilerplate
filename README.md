@@ -6,20 +6,22 @@
 ![Docker Pulls](https://img.shields.io/docker/pulls/brifiction/laravel-boilerplate?style=for-the-badge)
 
 ## Summary
-This is a Laravel boilerplate project. It will be updated to the latest Laravel version (upon official release, after 
-reviewing the upgrade notes and change logs).
+This is a Laravel boilerplate project. Usage of the provided CI/CD products / services, are purely optional. 
 
-Usage of the provided CI/CD products / services, are purely optional. However, the current focus of this boilerplate project 
-is to develop your Laravel application with Docker in a local environment.
+The Laravel boilerplate project focus:
+> To develop your Laravel application, with Docker, in a local environment.
 
-> Please review the files mentioned below, as you'll find most of my boilerplate customizations at these locations:
-> 1. The `composer.json` file, please review sections such as `require` and `require-dev`.
-> 1. Example helper functions, under `app/Helpers`.
-> 1. The `tests/*` files (more will be defined for CI/CD purposes).
+Please review the files mentioned below, before performing any continued development:
+1. The `composer.json` file, please review sections such as `require` and `require-dev`.
+1. The `package.json` file. Delete `package-lock.json` file, if you're using `yarn`.
+1. Example helper functions, under `app/Helpers`. Delete them if not used or required, then update `config/app.php` 
+under `aliases`.
+1. The `tests/*` files (more will be defined for CI/CD purposes).
 
-### Node / Yarn
-Please review the `package.json` file.
-> Delete this file `package-lock.json`, if you're using `yarn`.
+Lastly, this boilerplate will be maintained, by updating to the latest Laravel version (upon official Laravel 
+latest release, after reviewing the upgrade notes and change logs).
+
+> For more information, go to [Laravel Release Notes](https://laravel.com/docs/master/releases).
 
 ## Continuous Integration and Continuous Development (CI/CD)
 
