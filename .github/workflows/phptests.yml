@@ -46,8 +46,8 @@ jobs:
 
       - name: Create Database
         run: |
-          mkdir -p .github
-          touch .github/database.sqlite
+          mkdir -p .github/database
+          touch .github/database/database.sqlite
 
       - name: Execute tests (Unit and Feature tests) via PHPUnit
         env:
