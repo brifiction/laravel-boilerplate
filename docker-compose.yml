@@ -30,7 +30,6 @@ services:
     tty: true
     ports:
       - "9000:80"
-      - "443:443"
     volumes:
       - ./:/var/www
       - .docker/nginx/conf.d/:/etc/nginx/conf.d/
